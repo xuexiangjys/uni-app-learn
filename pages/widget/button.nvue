@@ -1,0 +1,73 @@
+<template>
+	<view>
+		<view class="uni-padding-wrap uni-common-mt">
+			<button type="primary" class="button" @click="onClickButton">primary</button>
+			<button type="primary" :loading="loading" class="button" @click="onClickButton">primary Loading</button>
+			<button type="primary" disabled="true" class="button">primary Disabled</button>
+
+			<button type="default" class="button" @click="onClickButton">default</button>
+			<button type="default" disabled="true" class="button">default Disabled</button>
+
+			<button type="warn" class="button" @click="onClickButton">warn</button>
+			<button type="warn" disabled="true" class="button" @click="onClickButton">warn Disabled</button>
+
+			<view class="button-sp-area">
+				<button class="mini-btn" type="primary" size="mini" @click="onClickButton">按钮</button>
+				<button class="mini-btn" type="default" size="mini" @click="onClickButton">按钮</button>
+				<button class="mini-btn" type="warn" size="mini" @click="onClickButton">按钮</button>
+			</view>
+		</view>
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				loading: false
+			}
+		},
+		onLoad() {
+			this._timer = null;
+		},
+		onShow() {
+			this.clearTimer();
+			this._timer = setTimeout(() => {
+				this.loading = true;
+			}, 300)
+		},
+		onUnload() {
+			this.clearTimer();
+			this.loading = false;
+		},
+		methods: {
+			clearTimer() {
+				if (this._timer != null) {
+					clearTimeout(this._timer);
+				}
+			},
+
+			onClickButton() {
+				uni.showToast({
+					title: '点击了按钮',
+					icon: 'none',
+					duration: 2000
+				})
+			}
+		}
+	}
+</script>
+
+<style>
+	.button {
+		margin: 16rpx 32rpx
+	}
+
+	.button-sp-area {
+		flex-direction: row;
+		margin: 16rpx 0;
+	}
+
+	.mini-btn {
+		margin: 16rpx 32rpx
+	}
+</style>

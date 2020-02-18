@@ -24,39 +24,48 @@
 		data() {
 			return {
 				list: [{
-						name: 'cart',
-						text: 'Grid 1',
+						name: 'checkbox',
+						url: './widget/button',
+						text: '按钮',
 					},
 					{
 						name: 'cart',
+						url: './widget/button',
 						text: 'Grid 2',
 					},
 					{
 						name: 'cart',
+						url: './widget/button',
 						text: 'Grid 3',
 					},
 					{
 						name: 'cart',
+						url: './widget/button',
 						text: 'Grid 4',
 					},
 					{
 						name: 'cart',
+						url: './widget/button',
 						text: 'Grid 5',
 					},
 					{
 						name: 'cart',
+						url: './widget/button',
 						text: 'Grid 6'
 					},
 					{
 						name: 'cart',
+						url: './widget/button',
 						text: 'Grid 7'
 					},
 					{
 						name: 'cart',
+						url: './widget/button',
 						text: 'Grid 8'
 					},
 					{
 						name: 'cart',
+						url: './widget/button',
 						text: 'Grid 9'
 					}
 				]
@@ -70,25 +79,27 @@
 				let {
 					index
 				} = e.detail
-				this.list[index].badge && this.list[index].badge++
-
-				uni.showToast({
-					title: `点击第${index+1}个宫格`,
-					icon: 'none'
-				})
+				uni.navigateTo({
+					url: this.list[index].url
+				});
 			},
 		}
 	}
 </script>
 
 <style>
-	
 	.grid-item-box {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		padding: 15px 0;;
+		padding: 15px 0;
+	}
+
+	.text {
+		font-size: 15px;
+		margin-top: 10px;
+		color: #808080;
 	}
 </style>
